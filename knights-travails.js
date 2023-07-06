@@ -1,5 +1,6 @@
 const boardSpaces = new Map();
 const knightsMoves = function(start = [0,0], end){
+    console.log(`> knightsMoves(${start}, ${end})`);
     let queue = [JSON.stringify(start)];
 
     boardSpaces.get(JSON.stringify(start)).distance = 0;
@@ -17,7 +18,7 @@ const knightsMoves = function(start = [0,0], end){
     }
     let steps = boardSpaces.get(JSON.stringify(end)).distance;
     let revPath = [end];
-    console.log(`You made it in ${steps} moves!  Here's your path:`);
+    console.log(`=> You made it in ${steps} moves!  Here's your path:\n`);
     traverseReverse(JSON.stringify(end), revPath);
     let path = reverseArray(revPath);
     path.forEach(move => console.log(move));
@@ -102,13 +103,6 @@ const possibleMoves = function(moveSet){
     return possible;
 }
 
-// 8 possible moves total
-// grid is set up as [0,0] to [8, 8];
-// the movement is 2 x/y then 1 x/y
-// [-2, 1], [-2, -1],
-// [2, 1],  [2, -1],
-// [-1, 2], [-1, -2],
-// [1 , 2], [1, -2 ]
-
+// SCRIPT//
 buildBoard();
-knightsMoves([0,0], [5,5]);
+knightsMoves([2,3], [2,4]);
